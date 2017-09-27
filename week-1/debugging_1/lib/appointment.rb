@@ -18,6 +18,7 @@ class Appointment
   attr_reader :location, :geocoder
 
   def geo_location
+
     geocoder.search(location)[0]
   end
 end
