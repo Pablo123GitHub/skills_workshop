@@ -6,7 +6,7 @@ class Answer
     @correct_answer = correct_answer
   end
 
-  def correct?
-    @answer_given == @correct_answer
+  def wrong?
+    @answer_given != @correct_answer
   end
 end

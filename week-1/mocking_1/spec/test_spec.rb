@@ -1,12 +1,24 @@
 require 'test'
-require 'answer'
+
+
+class FakeAnswer
+
+    def initialize(answer_given, correct_answer)
+      @answer_given   = answer_given
+      @correct_answer = correct_answer
+    end
+
+    def correct?
+      @answer_given == @correct_answer
+    end
+end
 
 describe Test do
   let(:answers) do
     [
-      Answer.new(5, 5),
-      Answer.new(7, 7),
-      Answer.new(1, 1)
+      FakeAnswer.new(5, 5),
+      FakeAnswer.new(7, 7),
+      FakeAnswer.new(1, 1)
     ]
   end
 
