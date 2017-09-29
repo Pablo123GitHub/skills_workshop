@@ -1,6 +1,14 @@
 require 'student'
 require 'test'
-require 'feedback'
+
+class MockFeedback
+  attr_reader :happiness
+
+  def initialize(happiness, day_submitted)
+    @happiness     = happiness
+    @day_submitted = day_submitted
+  end
+end
 
 describe Student do
   subject(:student) { Student.new }
@@ -19,8 +27,8 @@ describe Student do
 
   describe '#happiness' do
     it 'returns the average happiness reported' do
-      feedback_1 = Feedback.new(4, Date.today)
-      feedback_2 = Feedback.new(4, Date.today)
+      feedback_1 = MockFeedback.new(4, Date.today)
+      feedback_2 = MockFeedback.new(4, Date.today)
       student = Student.new(feedbacks: [feedback_1, feedback_2])
 
       expect(student.happiness).to eq 4
